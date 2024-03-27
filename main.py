@@ -12,10 +12,9 @@ from keep_alive import keep_alive
 keep_alive()
 
 
-TOKEN = '6536915386:AAHcuUYghP-ZGilGD7WeT6o_NzGzJjZwS2U'
+#TOKEN = '6536915386:AAHcuUYghP-ZGilGD7WeT6o_NzGzJjZwS2U'
 
-bot = telebot.TeleBot(TOKEN)
-
+bot = telebot.TeleBot(token = os.environ.get("token"))
 
 @bot.message_handler(commands=['start'])
 def start(message):
