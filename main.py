@@ -7,9 +7,17 @@ from telebot.types import ReplyKeyboardMarkup,KeyboardButton, InlineKeyboardButt
 from telebot import types
 import os
 
-from keep_alive import keep_alive
-
-keep_alive()
+from flask import Flask,render_template
+from threading import Thread
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return "Alive"
+def run():
+  app.run(host='0.0.0.0',port=8080)
+def keep_alive():  
+    t = Thread(target=run)
+    t.start()
 
 
 #TOKEN = '6536915386:AAHcuUYghP-ZGilGD7WeT6o_NzGzJjZwS2U'
