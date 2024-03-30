@@ -2,7 +2,7 @@
 import telebot
 from telebot.types import ReplyKeyboardMarkup,KeyboardButton, InlineKeyboardButton
 from telebot import types
-# import os
+import os
 
 from flask import Flask,render_template
 from threading import Thread
@@ -16,9 +16,10 @@ def keep_alive():
     t = Thread(target=run)
     t.start()
 
-TOKEN = '6536915386:AAHcuUYghP-ZGilGD7WeT6o_NzGzJjZwS2U'
+#TOKEN = '6536915386:AAHcuUYghP-ZGilGD7WeT6o_NzGzJjZwS2U'
 
-bot = telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(token = os.environ.get("token"))
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
